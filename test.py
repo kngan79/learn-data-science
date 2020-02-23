@@ -8,6 +8,7 @@ def get_file(fileName):
 
 def get_attributes(row):
     attributes = row.split(',')
+    attributes.pop()
     for i in range(len(attributes)):
         attributes[i] = float(attributes[i])
     return attributes
@@ -36,7 +37,7 @@ def get_distance(row_1, row_2, min_attrs, max_attrs):
 
 def get_min_attributes(train_set):
     # A very large number
-    oo = 1000000
+    oo = 1000000.0
     min_attributes = [oo, oo, oo, oo]
     for row in train_set:
         current_attribute = get_attributes(row)
@@ -46,7 +47,7 @@ def get_min_attributes(train_set):
 
 def get_max_attributes(train_set):
     # A very large number
-    max_attributes = [0, 0, 0, 0]
+    max_attributes = [0.0, 0.0, 0.0, 0.0]
     for row in train_set:
         current_attribute = get_attributes(row)
         for i in range(4):
@@ -63,13 +64,30 @@ def classify_object(row_test, train_set, min_attrs, max_attrs, k = 10):
     for row_train in train_set:
         distance = get_distance(row_test, row_train, min_attrs, max_attrs)
         distance_array.append((distance, get_name(row_train)))
-    sorted(distance_array, key=take_first_element)
-    print(distance_array)
+    distance_array = sorted(distance_array, key=take_first_element)[:k]
+
+    cnt = {
+        "Iris-setosa": 0,
+        "Iris-versicolor": 0,
+        "Iris-virginica": 0
+    }
+    name = ["Iris-setosa", "Iris-versicolor", "Iris-virginica"]
+    for val in distance_array:
+        cnt[val[1]] += 1
+
+    if cnt["Iris-setosa"] >= cnt["Iris-versicolor"] and cnt["Iris-setosa"] >= cnt["Iris-virginica"]:
+        return "Iris-setosa"
+    if cnt["Iris-versicolor"] >= cnt["Iris-setosa"] and cnt["Iris-versicolor"] >= cnt["Iris-virginica"]:
+        return "Iris-versicolor"
+    if cnt["Iris-virginica"] >= cnt["Iris-versicolor"] and cnt["Iris-virginica"] >= cnt["Iris-setosa"]:
+        return "Iris-virginica"
 
 train = get_file("train.data")
 test = get_file("test.data")
 
 min_attrs = get_min_attributes(train)
-max_attrs = get_min_attributes(train)
+max_attrs = get_max_attributes(train)
 
-classify_object(test[0], train, min_attrs, max_attrs)
+for val in test:
+    obj = classify_object(val, train, min_attrs, max_attrs)
+    print(obj, get_name(val))
