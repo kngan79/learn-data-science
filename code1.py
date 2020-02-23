@@ -24,17 +24,7 @@ setosa80 = len(setosa) * 80 // 100
 versicolor80 = len(versicolor) * 80 // 100
 virginica80 = len(virginica) * 80 // 100
 
-a = setosa[0:setosa80]
-a.append(versicolor[0:versicolor80])
-a.append(virginica[0:virginica80])
-
-print(a[-1])
-
-s = ""
-for i in range(len(a)):
-    # print(type(a[i]))
-    s = s  + "a"
-    if i != len(a)-1:
-        s = s  + '\n'
-
-# print(s)
+a = []
+a.extend(setosa[0:setosa80])
+a.extend(versicolor[0:versicolor80])
+a.extend(virginica[0:virginica80])
