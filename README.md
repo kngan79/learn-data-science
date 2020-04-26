@@ -14,4 +14,4 @@ Iris data: I used K-nearest neighbor with min-max normalization
 
 ## Problem 2: Loan prediction data
 
-In work
+In progress
