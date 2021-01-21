@@ -6,7 +6,7 @@ As a beginner, I learn data science by practicing in exploratory data analysis (
 
 # My techniques used within these datasets
 
-To fully view my work in each dataset, please go to the coresponding folder.
+To fully view my work in each dataset, please go to the corresponding folder.
 
 ## Dataset 1: Brazilian E-Commerce Public Dataset by Olist
 *Dataset: https://www.kaggle.com/olistbr/brazilian-ecommerce
