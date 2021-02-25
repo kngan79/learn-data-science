@@ -1,6 +1,6 @@
 # Overview about Learn Data Science project
 
-Hi, I am Ngan Thai. This is my first project about data science. 
+Hi, I am Ngan Thai. Below are my very first projects about data science. 
 
 As a beginner, I learn data science by practicing in exploratory data analysis (EDA) and build some simple models based on basics algorithms, such as: Linear Regression, Logistics Regression and Random Forest to solve problems of prediction and classification. By the way, I am still reinforcing my knowledge day by day to be more flexible in processing, interpreting and analysing data to give useful insights.
 
